@@ -22,16 +22,11 @@ function createToken(payload){
 
 function verifyToken(token){
     return new Promise((resolve, reject) => {
-        console.log("verify token");
-        console.log(`token: ${token}`);
         jwt.verify(token, PUBLIC_KEY.key, (err, decoded) => {
             if(err || !decoded)
             {
-                console.log("error block");
-                console.log(`error: ${err}`);
                 return reject(err);
             }
-            console.log(decoded);
             resolve(decoded);
         })
     })
